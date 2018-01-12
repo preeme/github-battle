@@ -8,7 +8,6 @@ class Home extends React.Component {
         <h1>
           Battle your friends
         </h1>
-
         <Link className='button' to='/battle'>
           Battle
         </Link>
