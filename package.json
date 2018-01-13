@@ -29,6 +29,7 @@
     "axios": "^0.17.1",
     "hyper-material": "^0.1.0",
     "hyperpower": "^0.2.2",
+    "query-string": "^5.0.1",
     "react": "^16.0.0-alpha.5",
     "react-dom": "^16.0.0-alpha.5",
     "react-router-dom": "^4.2.2"
