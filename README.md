@@ -1,5 +1,9 @@
 #Github-battle
 
+<h3>
+Frontend built with React, flexbox, and Javascript
+</h3>
+
 <ul>
 <li>Display the popular repositories on github. 
 <li>The repositories are also seperated by certain programming languages
