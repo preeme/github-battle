@@ -1,21 +1,18 @@
 var axios = require("axios");
 
-var id = 'YOUR_CLIENT_ID';
-var sec = 'YOUR_SECRET_ID';
-var params = '?client_id=' + id + '&client_secret' + sec;
+var id = "ed97852284d5e27c84cd";
+var sec = "0b943cc6ad24b41bf4adb16b589e2cdae2100094";
+var params = '?client_id=' + id + '&client_secret=' + sec;
 
 function getProfile(username) {
-  return axios.get('https://api.github.com/users' + username + params)
+  return axios.get('https://api.github.com/users/' + username + params)
               .then(function(user) {
                 return user.data;
               });
 }
 
 function getRepos(username) {
-  return axios.get('https://api.github.com/users' + username + '/repos' + params + '&per_page=100')
-              .then(function(user) {
-                return user.data;
-              });
+  return axios.get('https://api.github.com/users/' + username + '/repos' + params + '&per_page=100');
 }
 
 function getStarCount (repos) {
@@ -40,7 +37,7 @@ function getUserData(user) {
   return axios.all([
     getProfile(user),
     getRepos(user)
-  ]).then(function (){
+  ]).then(function (data){
     let profile = data[0];
     let repos = data[1]
 
@@ -60,7 +57,7 @@ function sortUsers(users) {
 module.exports = {
   battle: function(users) {
     return axios.all(users.map(getUserData))
-      .then(sortPlayers)
+      .then(sortUsers)
       .catch(handleError)
   },
   fetchPopularRepos: function(language) {

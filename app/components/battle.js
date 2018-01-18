@@ -1,33 +1,7 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 var Link = require('react-router-dom').Link;
-
-function UserPreview (props) {
-  return (
-    <div>
-      <div className='column'>
-        <img className='avatar'
-          src={props.avatar}
-          alt={'Avatar for ' + props.username}
-        />
-        <h2 className='username'>@{props.username}</h2>
-      </div>
-      <button
-        className='reset'
-        onClick={props.onReset.bind(null, props.id)}
-        >
-        Reset
-      </button>
-    </div>
-  )
-}
-
-UserPreview.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired
-}
+var UserPreview = require('./userpreview');
 
 class UserInput extends React.Component {
   constructor(props) {
@@ -141,7 +115,14 @@ class Battle extends React.Component {
               username={userOneName}
               onReset={this.handleReset}
               id='userOne'
-            />
+            >
+              <button
+                className='reset'
+                onClick={props.onReset.bind(null, props.id)}
+                >
+                Reset
+              </button>
+            </UserPreview>
           }
 
           {!userTwoName && <UserInput
@@ -156,7 +137,14 @@ class Battle extends React.Component {
               username={userTwoName}
               onReset={this.handleReset}
               id='userTwo'
-            />
+            >
+              <button
+                className='reset'
+                onClick={props.onReset.bind(null, props.id)}
+                >
+                Reset
+              </button>
+            </UserPreview>
           }
         </div>
 
@@ -164,7 +152,7 @@ class Battle extends React.Component {
           <Link
             className='button'
             to={{
-              pathname: match.url = '/results',
+              pathname: match.url + '/results',
               search: `?userOneName=` + userOneName + `&userTwoName=` + userTwoName
             }}>
             Battle
