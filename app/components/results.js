@@ -3,12 +3,26 @@ var queryString = require('query-string');
 var api = require('../utils/api');
 var Link = require('react-router-dom').Link;
 var PropTypes = require('prop-types');
+var UserPreview = require('./userpreview');
+
+function Profile(props){
+  return (
+    <UserPreview
+  )
+}
+
+Profile.propTypes = {
+  info: PropTypes.object.isRequired,
+}
 
 function Player(props){
   return (
     <div>
       <h1 className='header'>{props.label}</h1>
       <h3 style={{textAlign: 'center'}}> Score: {props.score} </h3>
+      <Profile
+        info={props.profile}
+      />
     </div>
   )
 }

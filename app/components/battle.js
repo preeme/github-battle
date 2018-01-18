@@ -113,12 +113,10 @@ class Battle extends React.Component {
             <UserPreview
               avatar={userOneImage}
               username={userOneName}
-              onReset={this.handleReset}
-              id='userOne'
             >
               <button
                 className='reset'
-                onClick={props.onReset.bind(null, props.id)}
+                onClick={this.handleReset.bind(null, 'userOne')}
                 >
                 Reset
               </button>
@@ -135,12 +133,10 @@ class Battle extends React.Component {
             <UserPreview
               avatar={userTwoImage}
               username={userTwoName}
-              onReset={this.handleReset}
-              id='userTwo'
             >
               <button
                 className='reset'
-                onClick={props.onReset.bind(null, props.id)}
+                onClick={this.handleReset.bind(null, 'userTwo')}
                 >
                 Reset
               </button>
