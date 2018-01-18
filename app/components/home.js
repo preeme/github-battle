@@ -1,18 +1,16 @@
-var React = require('react');
-var Link = require('react-router-dom').Link;
+var React = require("react");
+var Link = require("react-router-dom").Link;
 
 class Home extends React.Component {
-  render () {
+  render() {
     return (
-      <div className='home-container'>
-        <h1>
-          Battle your friends
-        </h1>
-        <Link className='button' to='/battle'>
+      <div className="home-container">
+        <h1>Battle your friends</h1>
+        <Link className="button" to="/battle">
           Battle
         </Link>
       </div>
-    )
+    );
   }
 }
 

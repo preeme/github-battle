@@ -1,15 +1,15 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var Link = require('react-router-dom').Link;
-var UserPreview = require('./userpreview');
+var React = require("react");
+var PropTypes = require("prop-types");
+var Link = require("react-router-dom").Link;
+var UserPreview = require("./userpreview");
 
 class UserInput extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: ''
-    }
+      username: ""
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -19,8 +19,8 @@ class UserInput extends React.Component {
     this.setState(() => {
       return {
         username: value
-      }
-    })
+      };
+    });
   }
 
   handleSubmit(e) {
@@ -30,27 +30,27 @@ class UserInput extends React.Component {
   }
   render() {
     return (
-      <form className='column' onSubmit={this.handleSubmit}>
-        <label className='header' htmlFor='username'>
+      <form className="column" onSubmit={this.handleSubmit}>
+        <label className="header" htmlFor="username">
           {this.props.label}
         </label>
         <input
-          id='username'
-          placeholder='github username'
-          type='text'
-          autoComplete='off'
+          id="username"
+          placeholder="github username"
+          type="text"
+          autoComplete="off"
           value={this.state.username}
           onChange={this.handleChange}
         />
         <button
-          className='button'
-          type='submit'
+          className="button"
+          type="submit"
           disabled={!this.state.username}
-          >
-            Submit
-          </button>
+        >
+          Submit
+        </button>
       </form>
-    )
+    );
   }
 }
 
@@ -58,17 +58,17 @@ UserInput.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired
-}
+};
 
 class Battle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userOneName: '',
+      userOneName: "",
       userOneImage: null,
-      userTwoName: '',
+      userTwoName: "",
       userTwoImage: null
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
@@ -76,21 +76,22 @@ class Battle extends React.Component {
     this.setState(() => {
       var newState = {};
 
-      newState[id + 'Name'] = username;
-      newState[id + 'Image'] = 'https://github.com/' + username + '.png?size=200';
+      newState[id + "Name"] = username;
+      newState[id + "Image"] =
+        "https://github.com/" + username + ".png?size=200";
 
       return newState;
     });
   }
   handleReset(id) {
-    this.setState(function () {
+    this.setState(function() {
       var newState = {};
 
-      newState[id + 'Name'] = '';
-      newState[id + 'Image'] = null;
+      newState[id + "Name"] = "";
+      newState[id + "Image"] = null;
 
       return newState;
-    })
+    });
   }
   render() {
     let match = this.props.match;
@@ -101,61 +102,61 @@ class Battle extends React.Component {
 
     return (
       <div>
-        <div className='row'>
-          {!userOneName &&
+        <div className="row">
+          {!userOneName && (
             <UserInput
-              id='userOne'
-              label='User One'
+              id="userOne"
+              label="User One"
               onSubmit={this.handleSubmit}
-            />}
+            />
+          )}
 
-          {userOneImage !== null &&
-            <UserPreview
-              avatar={userOneImage}
-              username={userOneName}
-            >
+          {userOneImage !== null && (
+            <UserPreview avatar={userOneImage} username={userOneName}>
               <button
-                className='reset'
-                onClick={this.handleReset.bind(null, 'userOne')}
-                >
+                className="reset"
+                onClick={this.handleReset.bind(null, "userOne")}
+              >
                 Reset
               </button>
             </UserPreview>
-          }
+          )}
 
-          {!userTwoName && <UserInput
-            id='userTwo'
-            label='User Two'
-            onSubmit={this.handleSubmit}
-          />}
+          {!userTwoName && (
+            <UserInput
+              id="userTwo"
+              label="User Two"
+              onSubmit={this.handleSubmit}
+            />
+          )}
 
-          {userTwoImage !== null &&
-            <UserPreview
-              avatar={userTwoImage}
-              username={userTwoName}
-            >
+          {userTwoImage !== null && (
+            <UserPreview avatar={userTwoImage} username={userTwoName}>
               <button
-                className='reset'
-                onClick={this.handleReset.bind(null, 'userTwo')}
-                >
+                className="reset"
+                onClick={this.handleReset.bind(null, "userTwo")}
+              >
                 Reset
               </button>
             </UserPreview>
-          }
+          )}
         </div>
 
-        {userOneImage && userTwoImage &&
-          <Link
-            className='button'
-            to={{
-              pathname: match.url + '/results',
-              search: `?userOneName=` + userOneName + `&userTwoName=` + userTwoName
-            }}>
-            Battle
-          </Link>
-        }
+        {userOneImage &&
+          userTwoImage && (
+            <Link
+              className="button"
+              to={{
+                pathname: match.url + "/results",
+                search:
+                  `?userOneName=` + userOneName + `&userTwoName=` + userTwoName
+              }}
+            >
+              Battle
+            </Link>
+          )}
       </div>
-    )
+    );
   }
 }
 
