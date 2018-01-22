@@ -78,22 +78,16 @@ class Battle extends React.Component {
     }))
   }
   handleReset(id) {
-    this.setState(() => {
-      var newState = {};
-
-      newState[id + "Name"] = "";
-      newState[id + "Image"] = null;
-
-      return newState;
-    });
+    this.setState(() => ({
+      [id + 'Name']: '',
+      [id + 'Image']: null
+    }))
   }
-  render() {
-    const match = this.props.match;
-    const userOneName = this.state.userOneName;
-    const userTwoName = this.state.userTwoName;
-    const userOneImage = this.state.userOneImage;
-    const userTwoImage = this.state.userTwoImage;
 
+  //finish refactor 4:41
+  render() {
+    const { match } = this.props;
+    const { userOneName, userTwoName, userOneImage, userTwoImage } = this.state;
     return (
       <div>
         <div className="row">
@@ -104,7 +98,6 @@ class Battle extends React.Component {
               onSubmit={this.handleSubmit}
             />
           )}
-
           {userOneImage !== null && (
             <UserPreview avatar={userOneImage} username={userOneName}>
               <button
