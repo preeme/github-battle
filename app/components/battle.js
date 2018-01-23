@@ -84,7 +84,6 @@ class Battle extends React.Component {
     }))
   }
 
-  //finish refactor 4:41
   render() {
     const { match } = this.props;
     const { userOneName, userTwoName, userOneImage, userTwoImage } = this.state;

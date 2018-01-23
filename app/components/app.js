@@ -1,13 +1,13 @@
-var React = require("react");
-var Popular = require("./popular");
-var ReactRouter = require("react-router-dom");
-var Router = ReactRouter.BrowserRouter;
-var Route = ReactRouter.Route;
-var Switch = ReactRouter.Switch;
-var Nav = require("./nav");
-var Home = require("./home");
-var Battle = require("./battle");
-var Results = require("./results");
+const React = require("react");
+const Popular = require("./popular");
+const ReactRouter = require("react-router-dom");
+const Router = ReactRouter.BrowserRouter;
+const Route = ReactRouter.Route;
+const Switch = ReactRouter.Switch;
+const Nav = require("./nav");
+const Home = require("./home");
+const Battle = require("./battle");
+const Results = require("./results");
 
 class App extends React.Component {
   render() {
@@ -20,11 +20,7 @@ class App extends React.Component {
             <Route exact path="/popular" component={Popular} />
             <Route exact path="/battle" component={Battle} />
             <Route path="/battle/results" component={Results} />
-            <Route
-              render={function() {
-                return <p>Not Found</p>;
-              }}
-            />
+            <Route render={() => <p>Not Found</p>} />
           </Switch>
         </div>
       </Router>
