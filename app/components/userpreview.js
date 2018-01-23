@@ -1,5 +1,5 @@
-const React = require("react");
-const PropTypes = require("prop-types");
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function UserPreview({ avatar, username, children }) {
   return (
@@ -18,4 +18,4 @@ UserPreview.propTypes = {
   username: PropTypes.string.isRequired
 };
 
-module.exports = UserPreview;
+export default UserPreview;

@@ -1,10 +1,10 @@
-const React = require("react");
-const queryString = require("query-string");
-const api = require("../utils/api");
-const Link = require("react-router-dom").Link;
-const PropTypes = require("prop-types");
-const UserPreview = require("./userpreview");
-const Loading = require("./loading");
+import React from 'react';
+import queryString from 'query-string';
+import { battle } from '../utils/api';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import UserPreview from './userpreview';
+import Loading from './loading';
 
 function Profile({ info }) {
   return (
@@ -62,7 +62,7 @@ class Results extends React.Component {
       this.props.location.search
     );
 
-    api.battle([userOneName, userTwoName]).then(users => {
+    battle([userOneName, userTwoName]).then(users => {
       if (users === null) {
         return this.setState(() => ({
           error:
@@ -103,4 +103,4 @@ class Results extends React.Component {
   }
 }
 
-module.exports = Results;
+export default Results;
