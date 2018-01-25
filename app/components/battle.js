@@ -3,23 +3,30 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import UserPreview from './userpreview';
 
-class UserInput extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      username: ""
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+class UserInput extends React.Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired
   }
-  handleChange(e) {
+
+  static defaultProps = {
+    label: 'Username'
+  }
+
+  state = {
+    username: ''
+  }
+
+
+  handleChange = (e) => {
     const value = e.target.value;
 
     this.setState(() => ({ username: value }));
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault;
 
     this.props.onSubmit(this.props.id, this.state.username);
@@ -52,12 +59,6 @@ class UserInput extends React.Component {
     );
   }
 }
-
-UserInput.propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired
-};
 
 class Battle extends React.Component {
   constructor(props) {
